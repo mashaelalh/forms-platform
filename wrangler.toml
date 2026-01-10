@@ -1,0 +1,43 @@
+name = "forms-platform"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Main configuration for Cloudflare Pages/Workers
+main = ".vercel/output/static/_worker.js/index.js"
+assets = { directory = ".vercel/output/static", binding = "ASSETS" }
+
+[env.staging]
+name = "forms-platform-staging"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "forms_platform_db"
+database_id = "d15db471-2db6-49bb-959b-688bec5db17a"
+preview_database_id = "aa4d783d-f041-4b68-b123-1a4ac816663b"
+
+[[env.staging.r2_buckets]]
+binding = "FILES"
+bucket_name = "forms-platform-files"
+preview_bucket_name = "forms-platform-files-preview"
+
+[env.staging.vars]
+APP_BASE_URL = "https://forms-platform-staging.workers.dev"
+PUBLIC_FORM_TOKEN_TTL_SECONDS = "2592000"
+MAX_FILE_SIZE_MB = "20"
+
+[env.production]
+name = "forms-platform-production"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "forms_platform_db_prod"
+database_id = "TO_BE_CREATED"
+
+[[env.production.r2_buckets]]
+binding = "FILES"
+bucket_name = "forms-platform-files-prod"
+
+[env.production.vars]
+APP_BASE_URL = "https://forms-platform.workers.dev"
+PUBLIC_FORM_TOKEN_TTL_SECONDS = "2592000"
+MAX_FILE_SIZE_MB = "20"
