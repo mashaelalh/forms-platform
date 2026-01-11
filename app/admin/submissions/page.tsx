@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getDB, getSubmissionsByTemplate, getAllTemplates } from '@/lib/db';
 import type { Submission, Template } from '@/lib/types';
+import SubmissionsTable from '@/components/SubmissionsTable';
 
 export const dynamic = 'force-dynamic';
 
@@ -70,62 +71,7 @@ export default async function SubmissionsPage({ searchParams }: PageProps) {
               </p>
             </div>
 
-            {submissions.length === 0 ? (
-              <div className="p-8 text-center text-gray-500">
-                <p>No submissions yet for this template.</p>
-              </div>
-            ) : (
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                      ID
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                      Submitted
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                      Language
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                      Slot
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {submissions.map((submission) => {
-                    const payload = JSON.parse(submission.payload_json);
-                    return (
-                      <tr key={submission.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 text-sm font-mono">
-                          {submission.id.substring(0, 8)}...
-                        </td>
-                        <td className="px-6 py-4 text-sm text-gray-500">
-                          {new Date(submission.submitted_at).toLocaleString()}
-                        </td>
-                        <td className="px-6 py-4 text-sm">
-                          {submission.language === 'ar' ? 'عربي' : 'English'}
-                        </td>
-                        <td className="px-6 py-4 text-sm">
-                          {payload.person_slot || '-'}
-                        </td>
-                        <td className="px-6 py-4">
-                          <button
-                            className="text-blue-600 hover:underline text-sm"
-                            onClick={() => alert(JSON.stringify(payload, null, 2))}
-                          >
-                            View Details
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
+            <SubmissionsTable submissions={submissions} />
           </div>
         )}
       </div>
