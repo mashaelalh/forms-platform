@@ -8,7 +8,6 @@ import {
 import { jsonResponse, errorResponse, parseTemplateDefinition } from '@/lib/utils';
 import type { TemplateDefinition } from '@/lib/types';
 
-export const runtime = 'edge';
 
 // Get single template
 export async function GET(

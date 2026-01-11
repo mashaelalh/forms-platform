@@ -1,10 +1,8 @@
 import { NextRequest } from 'next/server';
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getR2 } from '@/lib/db';
 import { generateObjectKey, jsonResponse, errorResponse } from '@/lib/utils';
 import type { PresignUploadRequest, PresignUploadResponse } from '@/lib/types';
-
-export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,7 +14,7 @@ export async function POST(request: NextRequest) {
       return errorResponse('Missing required fields', 400);
     }
 
-    const { env } = getRequestContext();
+    const { env } = getCloudflareContext();
     const cloudflareEnv = env as unknown as CloudflareEnv;
     const maxSizeMB = parseInt(cloudflareEnv.MAX_FILE_SIZE_MB || '20');
     const maxSizeBytes = maxSizeMB * 1024 * 1024;

@@ -3,7 +3,7 @@ import { getTemplate } from '@/lib/db';
 import { parseTemplateDefinition } from '@/lib/utils';
 import FormRenderer from '@/components/FormRenderer';
 
-export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
   params: Promise<{

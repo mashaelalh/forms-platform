@@ -1,6 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import type {
   Template,
   TemplateVersion,
@@ -11,17 +11,17 @@ import type {
 } from './types';
 
 export function getDB(): D1Database {
-  const { env } = getRequestContext();
+  const { env } = getCloudflareContext();
   return env.DB;
 }
 
 export function getR2(): R2Bucket {
-  const { env } = getRequestContext();
+  const { env } = getCloudflareContext();
   return env.FILES;
 }
 
 export function getEnv(): CloudflareEnv {
-  const { env } = getRequestContext();
+  const { env } = getCloudflareContext();
   return env as CloudflareEnv;
 }
 

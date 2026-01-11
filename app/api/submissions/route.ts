@@ -14,7 +14,6 @@ import {
 } from '@/lib/utils';
 import type { CreateSubmissionRequest } from '@/lib/types';
 
-export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
   try {

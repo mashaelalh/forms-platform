@@ -7,7 +7,6 @@ import {
 } from '@/lib/db';
 import { jsonResponse, errorResponse } from '@/lib/utils';
 
-export const runtime = 'edge';
 
 export async function POST(
   request: NextRequest,

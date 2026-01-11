@@ -2,7 +2,6 @@ import { NextRequest } from 'next/server';
 import { getR2 } from '@/lib/db';
 import { jsonResponse, errorResponse } from '@/lib/utils';
 
-export const runtime = 'edge';
 
 export async function PUT(request: NextRequest) {
   try {

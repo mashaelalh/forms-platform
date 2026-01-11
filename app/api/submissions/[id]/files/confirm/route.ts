@@ -4,7 +4,6 @@ import { createFileRecord } from '@/lib/db';
 import { generateId, jsonResponse, errorResponse } from '@/lib/utils';
 import type { ConfirmFileRequest } from '@/lib/types';
 
-export const runtime = 'edge';
 
 export async function POST(
   request: NextRequest,

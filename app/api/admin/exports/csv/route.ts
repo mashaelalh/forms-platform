@@ -8,7 +8,6 @@ import {
 } from '@/lib/db';
 import { errorResponse, parseTemplateDefinition } from '@/lib/utils';
 
-export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   try {

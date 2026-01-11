@@ -1,5 +1,5 @@
-// Cloudflare Workers bindings
-// Use declaration merging to extend the CloudflareEnv interface from @cloudflare/next-on-pages
+// Cloudflare Workers bindings for OpenNext
+// This interface defines the bindings available in your Cloudflare Worker
 declare global {
   interface CloudflareEnv {
     DB: D1Database;

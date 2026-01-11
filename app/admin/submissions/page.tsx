@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getDB, getSubmissionsByTemplate, getAllTemplates } from '@/lib/db';
 import type { Submission, Template } from '@/lib/types';
 
-export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
   searchParams: Promise<{

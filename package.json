@@ -7,25 +7,27 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && wrangler deploy",
-    "deploy:staging": "npm run build && wrangler deploy --env staging"
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy:staging": "npm run cf:build && wrangler deploy --env staging"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "latest",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.0",
     "@cloudflare/workers-types": "^4.20260109.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.27.2",
     "eslint": "^9",
     "eslint-config-next": "^15.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "wrangler": "^3.100.0"
+    "wrangler": "latest"
   }
 }
